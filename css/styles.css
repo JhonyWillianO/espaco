@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #fff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,7 +11,7 @@ body {
 header {
     width: 100%;
     background-color: #000;
-    color: rgb(255, 255, 255);
+    color: #fff;
     padding: 20px;
     box-sizing: border-box;
     text-align: left;
@@ -37,7 +37,7 @@ header h1 img {
 .buttons button {
     text-decoration: none;
     background-color: #fff200;
-    color: rgb(0, 0, 0);
+    color: #000;
     padding: 15px 30px;
     border-radius: 5px;
     margin: 5px;
@@ -59,12 +59,9 @@ header h1 img {
     padding: 20px;
 }
 
-.photos {
-    margin-bottom: 40px;
-}
-
 .photos h2 {
     text-align: center;
+    margin-bottom: 40px;
 }
 
 .slideshow-container {
@@ -88,45 +85,11 @@ header h1 img {
 }
 
 @keyframes slide {
-    0% {
-        transform: translateX(0%);
-    }
-
-    20% {
-        transform: translateX(0%);
-    }
-
-    25% {
-        transform: translateX(-100%);
-    }
-
-    45% {
-        transform: translateX(-100%);
-    }
-
-    50% {
-        transform: translateX(-200%);
-    }
-
-    70% {
-        transform: translateX(-200%);
-    }
-
-    75% {
-        transform: translateX(-300%);
-    }
-
-    95% {
-        transform: translateX(-300%);
-    }
-
-    100% {
-        transform: translateX(-400%);
-    }
-
-    105% {
-        transform: translateX(-500%);
-    }
+    0%, 20% { transform: translateX(0%); }
+    25%, 45% { transform: translateX(-100%); }
+    50%, 70% { transform: translateX(-200%); }
+    75%, 95% { transform: translateX(-300%); }
+    100%, 105% { transform: translateX(-400%); }
 }
 
 .products {
@@ -163,7 +126,7 @@ header h1 img {
 .product-item p {
     margin: 0;
     font-size: 1.2em;
-    color: #000000;
+    color: #000;
 }
 
 .search-bar {
@@ -171,24 +134,27 @@ header h1 img {
     padding: 10px;
     margin: 10px;
     text-align: center;
-
 }
 
+footer a {
+    text-decoration: none;
+    background-color: #e1c913;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
 
-footer {
-    a {
-        text-decoration: none;
-        background-color: #e1c913;
-        color: rgb(0, 0, 0);
-        padding: 10px 20px;
-        border-radius: 5px;
-        margin: 5px;
-        font-size: 1em;
-        transition: background-color 0.3s;
-        display: inline-block;
-    }
+footer a:hover {
+    background-color: #e68a00;
+}
 
-    a:hover {
-        background-color: #e68a00;
-    }
+.added-icon {
+    margin-left: 10px;
+    color: green;
+    font-size: 1.5em;
+    vertical-align: middle;
 }
