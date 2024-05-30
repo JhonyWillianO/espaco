@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Espaço Jasmim</title>
+    <link rel="icon" href="images/LogoTipo.png" type="image/png">
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+    <header>
+        <h1>Sala de Conversa</h1>
+        <footer><a href="home.html">🡄 Voltar</a></footer>
+    </header>
+    <div class="chat-container">
+        <div id="messages" class="messages"></div>
+        <form id="chat-form" class="chat-form">
+            <input type="text" id="message-input" placeholder="Digite sua mensagem..." required>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

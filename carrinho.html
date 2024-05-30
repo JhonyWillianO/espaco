@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Espaço Jasmim</title>
+    <link rel="icon" href="images/LogoTipo.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/cart.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Carrinho de Compras</h1>
+        <footer><a href="produtos.html">🡄 Voltar aos Produtos</a></footer>
+    </header>
+    <div class="cart">
+        <h2>Seus Itens</h2>
+        <div id="cart-items"></div>
+        <h3>Total: R$ <span id="total-price">0.00</span></h3>
+        <button onclick="finalizePurchase()">Finalizar Compra</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Espaço Jasmim</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/LogoTipo.png" type="image/png">
+    <script src="js/products.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Produtos</h1>
+        <footer><a href="home.html">🡄 Voltar</a></footer><footer><a href="carrinho.html">🛒 Ver Carrinho</a></footer>
+    </header>
+    <div class="buttons">
+        <button onclick="filterProducts('alimentos')">Alimentos 😋</button>
+        <button onclick="filterProducts('bebidas')">Bebidas 🥤</button>
+        <button onclick="filterProducts('cervejas')">Cervejas 🍺</button>
+        <button onclick="filterProducts('doces')">Doces 🍬</button>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="search-input" oninput="searchProducts()" placeholder="Pesquisar produtos...✍">
+    </div>
+    <div class="products">
+        <div class="product alimentos"></div>
+        <div class="product bebidas"></div>
+        <div class="product cervejas"></div>
+        <div class="product doces"></div>
+    </div>
+
+    <footer>
+        <a href="home.html">Voltar para a página principal</a>
+        <a href="carrinho.html">🛒 Ver Carrinho</a>
+        <a href="produtos.html">🡅</a>
+
+    </footer>
+</body>
+
+</html>
