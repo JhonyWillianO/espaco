@@ -32,6 +32,19 @@ const products = {
     ]
 };
 
+function searchProducts() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const allProducts = document.querySelectorAll('.product-item');
+    allProducts.forEach(product => {
+        const productName = product.querySelector('.product-name').textContent.toLowerCase();
+        if (productName.includes(searchTerm)) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+
 let cart = [];
 
 function generateProductHTML(product, category) {
