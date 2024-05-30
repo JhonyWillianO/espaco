@@ -32,26 +32,18 @@ const products = {
     ]
 };
 
-function generateProductHTML(product) {
+let cart = [];
+
+function generateProductHTML(product, category) {
     return `
-        <div class="product-item">
+        <div class="product-item" data-category="${category}">
             <img src="${product.image}" alt="${product.name}">
-            <h3 class="product-name">${product.name}</h3>
+            <h3>${product.name}</h3>
             <p>R$ ${product.price.toFixed(2)}</p>
-            <button onclick="addToCart('${product.name}', ${product.price})">Adicionar ao Carrinho</button>
+            <button onclick="addToCart('${product.name}', ${product.price}, this)">Adicionar ao Carrinho</button>
+            <span class="added-icon" style="display: none;">👍</span>
         </div>
     `;
-}
-
-function loadProducts() {
-    const categories = Object.keys(products);
-    categories.forEach(category => {
-        const container = document.querySelector(`.product.${category}`);
-        container.innerHTML = ''; // Clear the container first
-        products[category].forEach(product => {
-            container.innerHTML += generateProductHTML(product);
-        });
-    });
 }
 
 function filterProducts(category) {
@@ -65,27 +57,72 @@ function filterProducts(category) {
     });
 }
 
-function addToCart(name, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name, price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Produto adicionado ao carrinho!');
+function loadProducts() {
+    const categories = Object.keys(products);
+    categories.forEach(category => {
+        const container = document.querySelector(`.product.${category}`);
+        products[category].forEach(product => {
+            container.innerHTML += generateProductHTML(product, category);
+        });
+    });
 }
 
-function searchProducts() {
-    const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const allProducts = document.querySelectorAll('.product-item');
-    allProducts.forEach(product => {
-        const productName = product.querySelector('.product-name').textContent.toLowerCase();
-        if (productName.includes(searchTerm)) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
-        }
+function addToCart(name, price, button) {
+    cart.push({ name, price });
+    updateCart();
+    const icon = button.nextElementSibling;
+    icon.style.display = 'inline';
+}
+
+function updateCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalAmountContainer = document.getElementById('total-amount');
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+        cartItemsContainer.appendChild(li);
+        total += item.price;
+    });
+
+    totalAmountContainer.textContent = total.toFixed(2);
+}
+
+function finalizePurchase() {
+    const purchaseCode = `ESP-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+    let purchaseDetails = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        purchaseDetails += `<li>${item.name} - R$ ${item.price.toFixed(2)}</li>`;
+        total += item.price;
+    });
+
+    const newWindow = window.open("", "Compra Finalizada", "width=400,height=400,top=" + (window.innerHeight/2 - 200) + ",left=" + (window.innerWidth/2 - 200));
+    newWindow.document.write(`
+        <h2>Compra Finalizada</h2>
+        <p>Código da compra: <strong>${purchaseCode}</strong></p>
+        <ul>${purchaseDetails}</ul>
+        <p>Total: R$ ${total.toFixed(2)}</p>
+        <button onclick="window.print()">Imprimir</button>
+    `);
+
+    resetCart();
+    resetProductsPage();
+}
+
+function resetCart() {
+    cart = [];
+    updateCart();
+}
+
+function resetProductsPage() {
+    const icons = document.querySelectorAll('.added-icon');
+    icons.forEach(icon => {
+        icon.style.display = 'none';
     });
 }
 
 document.addEventListener('DOMContentLoaded', loadProducts);
-
-
-
