@@ -1,141 +1,15 @@
-const products = {
-    alimentos: [
-        { name: "Salgado-Frito/Assado", price: 6.00, image: "images/salgado.jpeg" },
-        { name: "Salgado-BolinhaDeCarne", price: 7.00, image: "images/bolinha.jpeg" },
-        { name: "Puruca Suina", price: 3.50, image: "images/pele.jpeg" }
-    ],
-    bebidas: [
-        { name: "Refrigerante-Lata", price: 4.00, image: "images/lata.jpeg" },
-        { name: "Refrigerante-Mini-Lata", price: 2.50, image: "images/mine lata.jpeg" },
-        { name: "Refrigerante-GarrafaCoca-cola 1L", price: 5.00, image: "images/coca 1l.jpeg" },
-        { name: "Refrigerante-GarrafinhaCoca-cola Ks", price: 3.00, image: "images/cocaks.webp" },
-        { name: "Refrigerante-CocaCola", price: 10.00, image: "images/cola 2l.jpeg" },
-        { name: "Refrigerante-Fantas/Sprite 2L", price: 9.00, image: "images/refri 2l.jpeg" },
-        { name: "Àgua-Cristal Garrafa", price: 2.50, image: "images/agua.jpeg" },
-        { name: "Pira Kids", price: 2.50, image: "images/toddynho.jpeg"},
-        { name: "Refrigerante-VencetexGarrafa", price: 3.00, image: "images/venex g.jpeg"},
-        { name: "Refrigerante-Vencetex 2L", price: 7.00, image: "images/venex.jpeg"},
-        { name: "Monster Energy", price: 9.00, image: "images/energetico.jpeg"},
-        { name: "Suco-Del Valle", price: 4.00, image: "images/suco.jpeg"}
-    ],
-    cervejas: [
-        { name: "Garrafa-Brahma", price: 8.00, image: "images/BH.jpeg" },
-        { name: "Garrafa-Litrão Antarctica", price: 8.00, image: "images/antatica.jpeg" },
-        { name: "Litrinho-Skol", price: 3.50, image: "images/Skol l.jpeg" },
-        { name: "Litrinho-Itaipava", price: 3.00, image: "images/itaipava l.jpeg" },
-        { name: "Lata-BH/Skol", price: 4.50, image: "images/lata ceverja.jpeg"}
-    ],
-    doces: [
-        { name: "Paçoca", price: 2.00, image: "images/rolhaaa.webp" },
-        { name: "Prestígio", price: 3.00, image: "images/doce.jpeg" },
-        { name: "BomBom Sonho de Valsa", price: 2.00, image: "images/bombom.jpg" }
-    ]
-};
-
-function searchProducts() {
-    const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const allProducts = document.querySelectorAll('.product-item');
-    allProducts.forEach(product => {
-        const productName = product.querySelector('.product-name').textContent.toLowerCase();
-        if (productName.includes(searchTerm)) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
-        }
-    });
-}
-
-let cart = [];
-
-function generateProductHTML(product, category) {
-    return `
-        <div class="product-item" data-category="${category}">
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>R$ ${product.price.toFixed(2)}</p>
-            <button onclick="addToCart('${product.name}', ${product.price}, this)">Adicionar ao Carrinho</button>
+const products={alimentos:[{name:"Salgado-Frito/Assado",price:6,image:"images/salgado.jpeg"},{name:"Salgado-BolinhaDeCarne",price:7,image:"images/bolinha.jpeg"},{name:"Puruca Suina",price:3.5,image:"images/pele.jpeg"}],bebidas:[{name:"Refrigerante-Lata",price:4,image:"images/lata.jpeg"},{name:"Refrigerante-Mini-Lata",price:2.5,image:"images/mine lata.jpeg"},{name:"Refrigerante-GarrafaCoca-cola 1L",price:5,image:"images/coca 1l.jpeg"},{name:"Refrigerante-GarrafinhaCoca-cola Ks",price:3,image:"images/cocaks.webp"},{name:"Refrigerante-CocaCola",price:10,image:"images/cola 2l.jpeg"},{name:"Refrigerante-Fantas/Sprite 2L",price:9,image:"images/refri 2l.jpeg"},{name:"\xC0gua-Cristal Garrafa",price:2.5,image:"images/agua.jpeg"},{name:"Pira Kids",price:2.5,image:"images/toddynho.jpeg"},{name:"Refrigerante-VencetexGarrafa",price:3,image:"images/venex g.jpeg"},{name:"Refrigerante-Vencetex 2L",price:7,image:"images/venex.jpeg"},{name:"Monster Energy",price:9,image:"images/energetico.jpeg"},{name:"Suco-Del Valle",price:4,image:"images/suco.jpeg"}],cervejas:[{name:"Garrafa-Brahma",price:8,image:"images/BH.jpeg"},{name:"Garrafa-Litr\xE3o Antarctica",price:8,image:"images/antatica.jpeg"},{name:"Litrinho-Skol",price:3.5,image:"images/Skol l.jpeg"},{name:"Litrinho-Itaipava",price:3,image:"images/itaipava l.jpeg"},{name:"Lata-BH/Skol",price:4.5,image:"images/lata ceverja.jpeg"}],doces:[{name:"Pa\xE7oca",price:2,image:"images/rolhaaa.webp"},{name:"Prest\xEDgio",price:3,image:"images/doce.jpeg"},{name:"BomBom Sonho de Valsa",price:2,image:"images/bombom.jpg"}]};function searchProducts(){const a=document.getElementById("search-input").value.toLowerCase(),b=document.querySelectorAll(".product-item");b.forEach(b=>{const c=b.querySelector(".product-name").textContent.toLowerCase();b.style.display=c.includes(a)?"block":"none"})}let cart=[];function generateProductHTML(a,b){return`
+        <div class="product-item" data-category="${b}">
+            <img src="${a.image}" alt="${a.name}">
+            <h3>${a.name}</h3>
+            <p>R$ ${a.price.toFixed(2)}</p>
+            <button onclick="addToCart('${a.name}', ${a.price}, this)">Adicionar ao Carrinho</button>
             <span class="added-icon" style="display: none;">👍</span>
         </div>
-    `;
-}
-
-function filterProducts(category) {
-    const allProducts = document.querySelectorAll('.product-item');
-    allProducts.forEach(product => {
-        if (category === 'all' || product.parentElement.classList.contains(category)) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
-        }
-    });
-}
-
-function loadProducts() {
-    const categories = Object.keys(products);
-    categories.forEach(category => {
-        const container = document.querySelector(`.product.${category}`);
-        products[category].forEach(product => {
-            container.innerHTML += generateProductHTML(product, category);
-        });
-    });
-}
-
-function addToCart(name, price, button) {
-    cart.push({ name, price });
-    updateCart();
-    const icon = button.nextElementSibling;
-    icon.style.display = 'inline';
-}
-
-function updateCart() {
-    const cartItemsContainer = document.getElementById('cart-items');
-    const totalAmountContainer = document.getElementById('total-amount');
-    cartItemsContainer.innerHTML = '';
-    let total = 0;
-
-    cart.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
-        cartItemsContainer.appendChild(li);
-        total += item.price;
-    });
-
-    totalAmountContainer.textContent = total.toFixed(2);
-}
-
-function finalizePurchase() {
-    const purchaseCode = `ESP-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-    let purchaseDetails = '';
-    let total = 0;
-
-    cart.forEach(item => {
-        purchaseDetails += `<li>${item.name} - R$ ${item.price.toFixed(2)}</li>`;
-        total += item.price;
-    });
-
-    const newWindow = window.open("", "Compra Finalizada", "width=400,height=400,top=" + (window.innerHeight/2 - 200) + ",left=" + (window.innerWidth/2 - 200));
-    newWindow.document.write(`
+    `}function filterProducts(a){const b=document.querySelectorAll(".product-item");b.forEach(b=>{b.style.display="all"===a||b.parentElement.classList.contains(a)?"block":"none"})}function loadProducts(){const a=Object.keys(products);a.forEach(a=>{const b=document.querySelector(`.product.${a}`);products[a].forEach(c=>{b.innerHTML+=generateProductHTML(c,a)})})}function addToCart(a,b,c){cart.push({name:a,price:b}),updateCart();const d=c.nextElementSibling;d.style.display="inline"}function updateCart(){const a=document.getElementById("cart-items"),b=document.getElementById("total-amount");a.innerHTML="";let c=0;cart.forEach(b=>{const d=document.createElement("li");d.textContent=`${b.name} - R$ ${b.price.toFixed(2)}`,a.appendChild(d),c+=b.price}),b.textContent=c.toFixed(2)}function finalizePurchase(){const a=`ESP-${Math.random().toString(36).substr(2,9).toUpperCase()}`;let b="",c=0;cart.forEach(a=>{b+=`<li>${a.name} - R$ ${a.price.toFixed(2)}</li>`,c+=a.price});const d=window.open("","Compra Finalizada","width=400,height=400,top="+(window.innerHeight/2-200)+",left="+(window.innerWidth/2-200));d.document.write(`
         <h2>Compra Finalizada</h2>
-        <p>Código da compra: <strong>${purchaseCode}</strong></p>
-        <ul>${purchaseDetails}</ul>
-        <p>Total: R$ ${total.toFixed(2)}</p>
+        <p>Código da compra: <strong>${a}</strong></p>
+        <ul>${b}</ul>
+        <p>Total: R$ ${c.toFixed(2)}</p>
         <button onclick="window.print()">Imprimir</button>
-    `);
-
-    resetCart();
-    resetProductsPage();
-}
-
-function resetCart() {
-    cart = [];
-    updateCart();
-}
-
-function resetProductsPage() {
-    const icons = document.querySelectorAll('.added-icon');
-    icons.forEach(icon => {
-        icon.style.display = 'none';
-    });
-}
-
-document.addEventListener('DOMContentLoaded', loadProducts);
+    `),resetCart(),resetProductsPage()}function resetCart(){cart=[],updateCart()}function resetProductsPage(){const a=document.querySelectorAll(".added-icon");a.forEach(a=>{a.style.display="none"})}document.addEventListener("DOMContentLoaded",loadProducts);
