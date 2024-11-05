@@ -14,7 +14,7 @@ O site foi criado com o objetivo de:
 
 ## Acessar o Site
 Para visualizar o site, acesse pelo link:
-[Link para o site](https://espacojasmim.netlify.app/)
+[Espaço Jasmim](https://espacojasmim.netlify.app/)
 
 ## Autor
 Este projeto foi desenvolvido e é mantido por **Jhony Willian O Coimbra**.
