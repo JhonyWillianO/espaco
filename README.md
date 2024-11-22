@@ -15,6 +15,8 @@ O site foi criado com o objetivo de:
 ## Acessar o Site
 Para visualizar o site, acesse pelo link:
 [Espaço Jasmim](https://espacojasmim.netlify.app/)
+Para visualizar o TCC, acesse pelo link:
+[TCC](https://docs.google.com/document/d/1wc92uJcvhK9SJL6UIewNmHGT1tGIonjU/edit?usp=drive_link&ouid=103039358260410191770&rtpof=true&sd=true)
 
 ## Autor
 Este projeto foi desenvolvido e é mantido por **Jhony Willian O Coimbra**.
